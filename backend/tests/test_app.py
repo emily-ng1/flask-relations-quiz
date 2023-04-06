@@ -93,9 +93,9 @@ def test_addresses_returns_all_of_the_addresses(app, client):
 
 def test_person_with_address_returns_address_info_along_with_person(app, client):
     bob = find(test_cursor, Person, 15)
-    response = client.get(f'/person/addresses/{bob.businessentityid}')
+    response = client.get(f'/person/addresses/{bob.businessentityid}') #display the address for Person.id
     person_with_addresses = json.loads(response.data)
-    # breakpoint()
+    #breakpoint()
     assert person_with_addresses['businessentityid'] ==  15
     assert len(person_with_addresses['addresses']) ==  2
     assert person_with_addresses['addresses'][0]['addressline1'] == '123 romeo'
